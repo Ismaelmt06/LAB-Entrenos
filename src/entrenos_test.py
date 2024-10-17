@@ -7,5 +7,5 @@ def test_lee_entrenos():
     print(entrenos[-3:])
 
 if __name__ == "__main__":
-    # entrenos = entrenos.lee_entrenos()
+    #entrenos = entrenos.lee_entrenos()
     test_lee_entrenos()
