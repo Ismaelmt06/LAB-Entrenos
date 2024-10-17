@@ -18,3 +18,15 @@ def lee_entrenos(ruta_csv):
             tupla = Entreno[tipo, fechahora, ubicacion, duracion, calorias, distancia, frecuencia, compartido]
             entreno.append(tupla)
         return entreno
+
+def tipos_entrenos(entrenos):
+    tipos = set()
+    for e in entrenos:
+        tipos.add(e)
+    return sorted(list(tipos))
+def entrenos_duracion_superior(entrenos, d):
+    filtro = []
+    for e in entrenos:
+        if e.duracion >= d:
+            filtro.append(e)
+    return filtro
