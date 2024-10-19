@@ -3,7 +3,7 @@ import csv
 from datetime import datetime
 Entreno = namedtuple('Entreno', 'tipo, fechahora, ubicacion, duracion, calorias, distancia, frecuencia, compartido')
 def lee_entrenos(ruta_csv):
-    entreno = []
+    entrenos = []
     with open(ruta_csv, encoding= 'utf-8') as f:
         lector = csv.reader(f)
         next(lector)
@@ -16,8 +16,8 @@ def lee_entrenos(ruta_csv):
             frecuencia = int(frecuencia)
             compartido = compartido == 'S'
             tupla = Entreno[tipo, fechahora, ubicacion, duracion, calorias, distancia, frecuencia, compartido]
-            entreno.append(tupla)
-        return entreno
+            entrenos.append(tupla)
+        return entrenos
 
 def tipos_entrenos(entrenos):
     tipos = set()
@@ -30,3 +30,10 @@ def entrenos_duracion_superior(entrenos, d):
         if e.duracion >= d:
             filtro.append(e)
     return filtro
+
+def suma_calorias(entrenos, f_inicio, f_fin):
+    suma = 0
+    for e in entrenos:
+        if (f_inicio <= e.fechaHora <= f_fin):
+            suma += e.calorias
+    return suma
